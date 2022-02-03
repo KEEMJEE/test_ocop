@@ -4,4 +4,4 @@ from django.http import HttpResponse
 # Create your views here.
 
 def pybo(request):
-    return HttpResponse("안녕하세요")
+    return HttpResponse("안녕하세요 pybo")
