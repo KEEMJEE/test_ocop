@@ -58,6 +58,28 @@ def Greenlist(request):
     context = {'green_list': green_list}
     return render(request, 'point/greenlist.html', context)
 
+def Carbon_Modify(request):
+    """
+    admin계정만 들어와서 포인트 수정 가능
+    """
+
+
+#2/5 이부분 다시 보기
+    if request.method == 'POST':
+        form = CarbonForm(request.POST)
+        if form.is_valid():
+            carbonpoint = form.save(commit=False)
+            carbonpoint.create_date = timezone.now()
+            carbonpoint.save()
+            return redirect('point:carbonlist')
+    else:
+        form = CarbonForm()
+
+    context = {'form': form}
+    return render(request, 'point/carbonmodify.html', context)
+
+
+
 
 
 
