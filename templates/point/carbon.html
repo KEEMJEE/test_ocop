@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div>
+    <div class="green-title">
+            <h5 class="my-3 border-bottom pb-2" align="center">탄소포인트</h5>
+    </div>
+    <div>
+        <div class="green-list">
+            {% for Carbonpoint in carbon_list %}
+            <input type="checkbox">{{ Carbonpoint.pointtype }}</input>
+            <td>{{ Carbonpoint.cpoint }}P</td>
+            <p></p>
+            {% endfor %}
+            <button type="" class="btn btn-primary">조회하기</button>
+        </div>
+        <div>
+
+            <textarea  class = 'form-control' name = 'content' id = 'content'
+                       rows = '10'>{{ form.content.value|default_if_none:'' }}</textarea>
+
+            <button type="submit" class="btn btn-primary">삭제하기</button>
+            <button type="submit" class="btn btn-primary">계산하기</button>
+        </div>
+    </div>
+</div>
+{% endblock %}
