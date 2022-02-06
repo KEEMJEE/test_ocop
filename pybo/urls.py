@@ -16,5 +16,5 @@ urlpatterns = [
     path('question/list/', views.pybo, name='pybo'),
     path('question/list/<str:category_name>/', views.pybo, name='pybo'),
     path('question/detail/<int:question_id>/', views.detail, name='detail'),
-    path('question/create/<str:category_name>/', views.question_create, name='question_create_category'),
+    path('question/create/<str:category_name>/', views.question_create, name='question_create'),
 ]

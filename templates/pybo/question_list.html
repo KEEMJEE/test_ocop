@@ -112,7 +112,7 @@
         {% endif %}
     </ul>
     <!-- 페이징처리 끝 -->
-    <a href="{% url 'pybo:question_create' %}" class="btn btn-primary">질문 등록하기</a>
+    <a href="{% url 'pybo:question_create' category.name %}" class="btn btn-primary">질문 등록하기</a>
     </div>
 </div>
 <form id="searchForm" method="get" action="{% url 'pybo:pybo' %}">
