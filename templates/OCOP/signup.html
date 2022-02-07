@@ -2,14 +2,9 @@
 
 {% block content %}
 <div class="container my-3">
-  <div class="row my-3">
-    <div class="col-4">
-      <h4>회원가입</h4>
+  <div class="mypage-title">
+            <h5 class="my-3 border-bottom pb-2" align="center">회원가입</h5>
     </div>
-    <div class="col-8 text-right">
-      <span>또는 <a href="{% url 'OCOP:login' %}">로그인 하세요.</a></span>
-    </div>
-  </div>
   <form method="post" class="post-form">
     {% csrf_token %}
     {% include "form_errors.html" %}

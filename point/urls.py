@@ -8,6 +8,7 @@ urlpatterns = [
     path('creategreen/', views.Creategreen, name='creategreen'),
     path('carbonlist/', views.Carbonlist, name='carbonlist'),
     path('greenlist/', views.Greenlist, name='greenlist'),
+    path('carbonlist/modify/', views.Carbon_Modify, name='carbonmodify'),
     path('carbon/', views.Carbonpage, name='carbonpage'),
     path('green/', views.Greenpage, name='greenpage'),
 ]

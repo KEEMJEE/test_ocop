@@ -9,15 +9,15 @@
     <div>
         <div class="carbon-list">
             {% for Carbonpoint in carbon_list %}
-            <input type="checkbox">{{ Carbonpoint.pointtype }}</input>
+            <input type="checkbox" name="selected" id="selected" value="{{ Carbonpoint.id}}">{{ Carbonpoint.pointtype }}</input>
             <td>{{ Carbonpoint.cpoint }}P</td>
             <p></p>
             {% endfor %}
+            <a href="{% url 'point:carbonmodify' %}" class="btn btn-primary">수정하기</a>
         </div>
     </div>
         <div>
-            <button type="submit" class="btn btn-primary">추가하기</button>
-            <button type="submit" class="btn btn-primary">수정하기</button>
+            <a href="{% url 'point:createcarbon' %}" class="btn btn-primary">추가하기</a>
             <button type="submit" class="btn btn-primary">삭제하기</button>
         </div>
 </div>

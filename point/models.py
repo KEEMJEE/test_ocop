@@ -8,6 +8,7 @@ class Carbonpoint(models.Model):
     pointtype = models.TextField()
     cpoint = models.IntegerField()
     create_date = models.DateTimeField(auto_now_add=True)
+    modify_date = models.DateTimeField(null=True, blank=True)
 
     class Meta:
         db_table = 'carbonlist'
@@ -19,6 +20,7 @@ class Greenpoint(models.Model):
     pointtype = models.TextField()
     gpoint = models.IntegerField()
     create_date = models.DateTimeField(auto_now_add=True)
+    modify_date = models.DateTimeField(null=True, blank=True)
 
     class Meta:
         db_table = 'greenlist'
