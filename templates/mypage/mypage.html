@@ -1,21 +1,33 @@
 {% extends 'base.html' %}
 {% block content %}
 <div>
-    <div class="green-title">
+    <div class="mypage-title">
             <h5 class="my-3 border-bottom pb-2" align="center">마이페이지</h5>
     </div>
 </div>
 <div class ="row">
-    <div class="col-xl-4 col-lg-5">
-        <img src = "data:image/png;base64,{{ data }}" alt="" height="70%", width="100%">
+    <div class="col-xl-5 col-lg-6">
+         <div id="wrapper cart">
+            <div id="content-wrapper cart" class="d-flex flex-column">
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">My Chart</h6>
+                    </div>
+                    <div class = "card-body">
+                        <img src = "data:image/png;base64,{{ data }}" alt="" height="100%", width="100%">
+                    </div>
+                </div>
+            </div>
+         </div>
+
     </div>
 
-    <div class="col-xl-8 col-lg-">
+    <div class="col-xl-7 col-lg-7">
         <div id="wrapper">
             <div id="content-wrapper" class="d-flex flex-column">
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+                        <h6 class="m-0 font-weight-bold text-primary">Rank</h6>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
