@@ -8,6 +8,9 @@ class Category(models.Model):
     description = models.CharField(max_length=200, null=True, blank=True)
     has_answer = models.BooleanField(default=True)  # 답변가능 여부
 
+    class Meta:
+        db_table = 'pybo_category'
+
     def __str__(self):
         return self.name
 
@@ -15,12 +18,16 @@ class Category(models.Model):
         return reverse('pybo:pybo', args=[self.name])
 
 class Question(models.Model):
-
+    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='author_answer')
     subject = models.CharField(max_length=200)
     content = models.TextField()
     create_date = models.DateTimeField()
-    voter = models.ManyToManyField(User, blank=True)  # 추천인 추가
+    modify_date = models.DateTimeField(null=True, blank=True)
+    voter = models.ManyToManyField(User, blank=True, related_name='voter_question')  # 추천인 추가
     category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='category_question')
+
+    class Meta:
+        ordering = ['id']
 
     def __str__(self):
         return self.subject # id 값 대신 제목 표시
@@ -32,8 +39,9 @@ class Question(models.Model):
         return self.comment_set.all().order_by('-create_date')[:5]
 
 class Answer(models.Model):
+    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='author_question')
     question = models.ForeignKey(Question, on_delete=models.CASCADE)
     content = models.TextField()
     create_date = models.DateTimeField()
-    voter = models.ManyToManyField(User)  # 추천인 추가
-
+    modify_date = models.DateTimeField(null=True, blank=True)
+    voter = models.ManyToManyField(User, related_name='category_answer')  # 추천인 추가
