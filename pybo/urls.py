@@ -18,8 +18,9 @@ urlpatterns = [
     path('question/delete/<int:question_id>/', views.question_delete, name='question_delete'),
     path('answer/delete/<int:answer_id>/', views.answer_delete, name='answer_delete'),
 
-    # vote_views.py
+    # 추천
     path('vote/question/<int:question_id>/', views.vote_question, name='vote_question'),
+    path('vote/answer/<int:answer_id>/', views.vote_answer, name='vote_answer'),
 
     #category
     path('question/list/', views.pybo, name='pybo'),
