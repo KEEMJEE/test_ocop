@@ -21,6 +21,7 @@ def pybo(request, category_name='notice'):
     category_list = Category.objects.all()
     category = get_object_or_404(Category, name=category_name)
     question_list = Question.objects.filter(category=category)
+    question_all_list = Question.objects.all()
 
     # 정렬
     if so == 'recommend':
@@ -33,7 +34,7 @@ def pybo(request, category_name='notice'):
     # 조회, 검색
     # question_list = Question.objects.order_by('-create_date')
     if kw:
-        question_list = question_list.filter(
+        question_list = question_all_list.filter(
             Q(subject__icontains=kw) |  # 제목검색
             Q(content__icontains=kw) #|  # 내용검색
             # Q(author__username__icontains=kw) |  # 질문 글쓴이검색
