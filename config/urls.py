@@ -15,10 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from OCOP import views
 
 urlpatterns = [
+    path('OCOP/',include('OCOP.urls')),
     path('admin/', admin.site.urls),
     path('point/', include('point.urls')),
     path('mypage/', include('mypage.urls')),
     path('pybo/', include('pybo.urls')),
+    path('',views.main_page,name='index')
 ]

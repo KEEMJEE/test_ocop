@@ -16,19 +16,26 @@
     <header class="header clearfix">
     <!-- 네비게이션바 -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href=/">OCOP</a>
+        <a class="navbar-brand" href="{% url 'OCOP:OCOP' %}">OCOP</a>
         <ul class="nav">
             <li class="nav-item">
-                <a class="active nav-link" href="/">Home</a>
-                <li class="nav-item"><a class="nav-link" href="{% url 'point:carbonpage' %}">탄소포인트</a></li>
-                <li class="nav-item"><a class="nav-link" href="{% url 'point:greenpage' %}">그린포인트</a></li>
-                <li class="nav-item"><a class="nav-link" href="{% url 'mypage:mypage' %}">마이페이지</a></li>
-                <li class="nav-item"><a class="nav-link" href="{% url 'pybo:pybo' %}">게시판</a></li>
+                <a class="active nav-link" href="{% url 'OCOP:OCOP' %}">Home</a>
             </li>
             {% if user.is_authenticated %}
-            <li class="nav-item"><a class="nav-link" href="/">Welcome, {{ user.get_username }}</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Welcome, {{ user.get_username }}</a></li>
+            <li class="nav-item"><a class="nav-link" href="{% url 'mypage:mypage' %}">마이페이지</a></li>
+            <li class = "nav-item"><a class = "nav-link" href = "{% url 'OCOP:logout' %}">Logout</a></li>
+            <li class = "nav-item"><a class = "nav-link" href = "{% url 'point:carbonpage' %}">탄소포인트</a></li>
+            <li class = "nav-item"><a class = "nav-link" href = "{% url 'point:greenpage' %}">그린포인트</a></li>
+            <li class = "nav-item"><a class = "nav-link" href = "#">자동차탄소포인트</a></li>
+            <li class="nav-item"><a class="nav-link" href="{% url 'pybo:pybo' %}">게시판</a></li>
             {% else %}
-            <a class="nav-link" href="/">로그인</a>
+            <li class = "nav-item"><a class = "nav-link" href = "{% url 'OCOP:login' %}">Login</a></li>
+            <li class = "nav-item"><a class = "nav-link" href = "{% url 'OCOP:signup' %}">Signup</a></li>
+            <li class = "nav-item"><a class = "nav-link" href = "{% url 'point:carbonpage' %}">탄소포인트</a></li>
+            <li class = "nav-item"><a class = "nav-link" href = "{% url 'point:greenpage' %}">그린포인트</a></li>
+            <li class = "nav-item"><a class = "nav-link" href = "#">자동차탄소포인트</a></li>
+            <li class="nav-item"><a class="nav-link" href="{% url 'pybo:pybo' %}">게시판</a></li>
             {% endif %}
         </ul>
     </nav>
