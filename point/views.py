@@ -105,6 +105,15 @@ def Carbon_Delete(request, Carbonpoint_id):
     carbon.delete()
     return redirect('point:carbonlist')
 
+def Green_Delete(request, Greenpoint_id):
+    """
+    그린포인트 삭제
+    """
+    green = get_object_or_404(Greenpoint, pk = Greenpoint_id)
+
+    green.delete()
+    return redirect('point:greenlist')
+
 
 
 
