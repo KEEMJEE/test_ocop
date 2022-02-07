@@ -61,7 +61,7 @@
                             </td>
                              <td>
                                 {% if question.voter.all.count > 0 %}
-                                <span class="badge badge-warning px-2 py-1">{{ question.voter.all.count }}</span>
+                                    {{ question.voter.all.count }}
                                 {% endif %}
                             </td>
                             <td class="text-center">
