@@ -8,16 +8,20 @@
     </div>
     <div>
         <div class="green-list">
-            {% for Greenpoint in green_list %}
-            <input type="checkbox">{{ Greenpoint.pointtype }}</input>
+            {% csrf_token %}
+            {% for Greenpoint in greenlist %}
+            <td>{{ Greenpoint.pointtype }}</td>
             <td>{{ Greenpoint.gpoint }}P</td>
+            <td>{{ Greenpoint.create_date }}</td>
+            <td>{{ Greenpoint.modify_date }}P</td>
+            <a href = "{% url 'point:greenmodify' Greenpoint.id %}" class = 'btn btn-sm btn-outline-secondary'>수정하기</a>
             <p></p>
             {% endfor %}
+
         </div>
     </div>
         <div>
             <a href="{% url 'point:creategreen' %}" class="btn btn-primary">추가하기</a>
-            <button type="submit" class="btn btn-primary">수정하기</button>
             <button type="submit" class="btn btn-primary">삭제하기</button>
         </div>
 </div>

@@ -46,39 +46,64 @@ def Carbonlist(request):
     """
     탄소포인트, 그린포인트 목록을 보여주고 수정 추가 삭제 가능
     """
-    carbon_list = Carbonpoint.objects.order_by('create_date')
-    context = {'carbon_list': carbon_list}
+    carbonlist = Carbonpoint.objects.order_by('create_date')
+    context = {'carbonlist': carbonlist}
     return render(request, 'point/carbonlist.html', context)
 
 def Greenlist(request):
     """
     탄소포인트, 그린포인트 목록을 보여주고 수정 추가 삭제 가능
     """
-    green_list = Greenpoint.objects.order_by('create_date')
-    context = {'green_list': green_list}
+    greenlist = Greenpoint.objects.order_by('create_date')
+    context = {'greenlist': greenlist}
     return render(request, 'point/greenlist.html', context)
 
-def Carbon_Modify(request):
+def Carbon_Modify(request, Carbonpoint_id):
     """
     admin계정만 들어와서 포인트 수정 가능
     """
+    carbon = get_object_or_404(Carbonpoint, pk=Carbonpoint_id)
 
-
-#2/5 이부분 다시 보기
     if request.method == 'POST':
-        form = CarbonForm(request.POST)
+        form = CarbonForm(request.POST, instance = carbon)
         if form.is_valid():
             carbonpoint = form.save(commit=False)
-            carbonpoint.create_date = timezone.now()
+            carbonpoint.modify_date = timezone.now()
             carbonpoint.save()
             return redirect('point:carbonlist')
     else:
-        form = CarbonForm()
+        form = CarbonForm(instance=carbon)
 
     context = {'form': form}
     return render(request, 'point/carbonmodify.html', context)
 
+def Green_Modify(request, Greenpoint_id):
+    """
+    admin계정만 들어와서 포인트 수정 가능
+    """
+    green = get_object_or_404(Greenpoint, pk=Greenpoint_id)
 
+    if request.method == 'POST':
+        form = GreenForm(request.POST, instance = green)
+        if form.is_valid():
+            greenpoint = form.save(commit=False)
+            greenpoint.modify_date = timezone.now()
+            greenpoint.save()
+            return redirect('point:greenlist')
+    else:
+        form = GreenForm(instance=green)
+
+    context = {'form': form}
+    return render(request, 'point/greenmodify.html', context)
+
+def Carbon_Delete(request, Carbonpoint_id):
+    """
+    탄소포인트 삭제
+    """
+    carbon = get_object_or_404(Carbonpoint, pk = Carbonpoint_id)
+
+    carbon.delete()
+    return redirect('point:carbonlist')
 
 
 
